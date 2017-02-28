@@ -203,6 +203,17 @@
 		</tr>
 		{/define}
 
+	  {var $ownProperties = $class->ownProperties}
+
+		<div class="panel panel-default">
+      <div class="panel-heading"><h2>Properties summary</h2></div>
+			<table class="summary table table-bordered table-striped properties" id="properties" n:if="$ownProperties">
+			{foreach $ownProperties as $property}
+				{include property, property => $property}
+			{/foreach}
+			</table>
+		</div>
+
 		<div class="panel panel-default">
 			<div class="panel-heading"><h2>Methods summary</h2></div>
 			<table class="summary table table-bordered table-striped methods" id="methods" n:if="$ownMethods">
@@ -330,7 +341,7 @@
 		{/foreach}
 	{/if}
 
-	{var $ownProperties = $class->ownProperties}
+
 	{var $inheritedProperties = $class->inheritedProperties}
 	{var $usedProperties = $class->usedProperties}
 	{var $ownMagicProperties = $class->ownMagicProperties}
@@ -380,14 +391,6 @@
 		</tr>
 		{/define}
 
-		<div class="panel panel-default">
-            <div class="panel-heading"><h2>Properties summary</h2></div>
-			<table class="summary table table-bordered table-striped properties" id="properties" n:if="$ownProperties">
-			{foreach $ownProperties as $property}
-				{include property, property => $property}
-			{/foreach}
-			</table>
-		</div>
 
 		{foreach $inheritedProperties as $parentName => $properties}
 		<div class="panel panel-default">
